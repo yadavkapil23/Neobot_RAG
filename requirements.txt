@@ -3,6 +3,7 @@ uvicorn
 langchain
 langchain-community 
 python-dotenv
+langchain-huggingface
 faiss-cpu
 jinja2
 wikipedia
@@ -10,4 +11,4 @@ pypdf
 sentence-transformers 
 torch                 
 transformers          
-accelerate            
+accelerate

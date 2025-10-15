@@ -1,4 +1,12 @@
-
+---
+title: RAG Project
+emoji: 🧠
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 8000
+python_version: 3.10
+---
 
 # 🚀 RAG System with LangChain and FastAPI 🌐
 
@@ -78,7 +86,20 @@ This project uses Ollama to run local large language models.
 
 ## 🚀 Deployment
 
-### Docker Deployment
+### Hugging Face Spaces (Docker) Deployment
+This project is configured for a Hugging Face Space using the Docker runtime.
+
+1. Push this repository to GitHub (or connect local).
+2. Create a new Space on Hugging Face → Choose "Docker" SDK.
+3. Point it to this repo. Spaces will build using the `Dockerfile` and run `uvicorn` binding to the provided `PORT`.
+4. Ensure the file `data/sample.pdf` exists (or replace it) to allow FAISS index creation on startup.
+
+Notes:
+- Models `Qwen/Qwen2-0.5B-Instruct` and `all-MiniLM-L6-v2` will be downloaded on first run; initial cold start may take several minutes.
+- Dependencies are CPU-friendly; no GPU is required.
+- If you see OOM, consider reducing `max_new_tokens` in `vector_rag.py` or swapping to an even smaller instruct model.
+
+### Docker Deployment (Local)
 If you want to deploy your RAG system using Docker, simply build the Docker image and run the container:
 
 ```bash

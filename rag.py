@@ -1,25 +1,8 @@
-from vector_rag import query_vector_store
+from vector_rag import query_vector_store, llm # <--- FIX: Import llm here!
 import wikipedia
-from langchain_community.llms import HuggingFacePipeline
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-import os
-from dotenv import load_dotenv
+# REMOVED: All duplicate model/pipeline/tokenizer imports and initialization code
 
-load_dotenv()
-model_name = "Qwen/Qwen2-1.5B-Instruct"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name, device_map="cpu")
-llm_pipeline = pipeline(
-    "text-generation", 
-    model=model, 
-    tokenizer=tokenizer, 
-    max_new_tokens=512,
-    do_sample=True,
-    temperature=0.7,
-    top_p=0.9,
-)
-llm = HuggingFacePipeline(pipeline=llm_pipeline)
-
+# The 'llm' instance is now imported from vector_rag.py and is ready to use.
 wikipedia.set_lang("en")
 
 async def get_smart_rag_response(query: str) -> str:
@@ -27,7 +10,7 @@ async def get_smart_rag_response(query: str) -> str:
 
     # First: Try Wikipedia
     try:
-        summary = wikipedia.summary(query, sentences=5) # Dynamically gets summary
+        summary = wikipedia.summary(query, sentences=5)
         print("Wikipedia summary found.")
         
         prompt = f"""Use the following Wikipedia information to answer the question as clearly as possible.
@@ -38,20 +21,20 @@ Wikipedia Context:
 Question: {query}
 Answer:"""
         result = llm.predict(prompt) 
-        answer = result.replace(prompt, "").strip() # Cleanup
+        answer = result.replace(prompt, "").strip()
         return f"[Wikipedia]\n{answer}"
     except wikipedia.exceptions.PageError:
-        print("Wikipedia page not found.") # Corrected simple handling
+        print("Wikipedia page not found.")
     except wikipedia.exceptions.DisambiguationError as e:
         return f"The query is ambiguous. Did you mean: {', '.join(e.options[:5])}?"
 
     # Second: Fallback to LLM (no context)
     try:
         print("Fallback: LLM with no context")
-        # FALLBACK PROMPT LOGIC RESTORED
+        
         fallback_prompt = f"You are a knowledgeable assistant. Please answer the following question clearly:\n\n{query}"
         llm_answer = llm.predict(fallback_prompt) 
-        answer = llm_answer.replace(fallback_prompt, "").strip() # Cleanup
+        answer = llm_answer.replace(fallback_prompt, "").strip()
         if answer and "not sure" not in answer.lower():
             return f"[LLM Fallback]\n{answer.strip()}"
     except Exception as e:
