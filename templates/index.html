@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3b82f6" />
+  <title>RAG Explorer | Intelligent Knowledge Assistant</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Snow Background -->
+    <div class="snowfall"></div>
+
+    <!-- Main Card -->
+    <div class="main-card">
+      <!-- Header -->
+      <header>
+        <div class="header-content">
+          <div>
+            <h1></i> NeoBot</h1>
+            <p class="subtitle">Powered by RAG (Retrieval-Augmented Generation)</p>
+          </div>
+          <button id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main>
+        <div class="search-container">
+          <div class="search-box">
+            <input
+              type="text"
+              id="queryInput"
+              placeholder="Ask your question here..."
+              autocomplete="off"
+              aria-label="Question input"
+            />
+            <button id="askButton" class="primary-btn">
+              <i class="fas fa-search"></i> Ask
+            </button>
+          </div>
+
+<div class="examples">
+  <p>Try asking:</p>
+  <div class="example-chips" id="exampleChips">
+    <!-- Questions will be dynamically added here -->
+  </div>
+</div>
+
+        <!-- Answer Response -->
+        <div class="response-container" id="responseContainer">
+          <div class="welcome-message">
+            <h2>Welcome to RAG Explorer!</h2>
+            <p>Ask any question to get accurate, document-backed answers instantly.</p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>ChatBot</p>
+        <div class="footer-links">
+          <a href="#" class="footer-link"><i class="fab fa-github"></i> Source</a>
+          <a href="#" class="footer-link"><i class="fas fa-info-circle"></i> About</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
+

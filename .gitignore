@@ -1,0 +1,40 @@
+# Ignore virtual environment
+venv/
+ragenv/
+ENV/
+env/
+.venv/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+*.so
+
+# Environment variables
+.env
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs and databases (optional)
+*.log
+*.sqlite3
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# Cache
+*.cache
+*.pkl
+*.db
+
+# Node modules (if ever added)
+node_modules/
+
+Kubernetes/secret.yml
+

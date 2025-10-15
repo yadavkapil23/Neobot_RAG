@@ -1,0 +1,33 @@
+Knowledge Base
+
+
+Quantum computing uses qubits that can represent both 0 and 1 simultaneously, offering immense parallelism for computation.
+A transformer model uses self-attention to weigh the importance of each word in a sentence for tasks like translation or summarization.
+Python 3.12 introduced new error messages, better performance, and support for isolated subinterpreters.
+
+The French Revolution (1789–1799) radically transformed French society, ending monarchy and spreading ideas of liberty and equality.
+Mahatma Gandhi led the Indian independence movement through nonviolent civil disobedience, notably during the Salt March.
+
+A Random Forest is an ensemble of decision trees used for classification or regression. It reduces overfitting and improves accuracy.
+LangChain is a framework for developing LLM-powered apps with components like chains, tools, memory, and agents.
+
+Meditation helps in reducing stress, enhancing concentration, and improving emotional regulation. Regular practice can reduce anxiety.
+Intermittent fasting involves alternating periods of eating and fasting. It can help in weight loss and metabolic health.
+
+GDP (Gross Domestic Product) measures a country's economic output. A growing GDP usually indicates a healthy economy.
+Inflation refers to the general rise in prices over time, reducing purchasing power. Central banks use interest rates to control inflation.
+
+Photosynthesis is the process where green plants use sunlight, CO₂, and water to produce oxygen and glucose.
+Black holes are regions in space where gravity is so strong that nothing—not even light—can escape.
+
+A binary search tree is a node-based data structure where left children are smaller and right children are larger than the parent node.
+Recursion is a function calling itself until a base condition is met. It’s used in tree traversal, backtracking, and divide-and-conquer.
+
+Japan is an island country in East Asia known for its technology, cherry blossoms, and cultural traditions like tea ceremony and sumo.
+The Eiffel Tower was constructed in 1889 in Paris and is one of the most visited monuments in the world.
+
+Q: What is a black hole?
+A: A black hole is a region in space where gravity is so strong that nothing, not even light, can escape its pull.
+
+Q: How do neural networks work?
+A: Neural networks consist of layers of nodes that process inputs through weighted connections and activation functions to detect patterns.
