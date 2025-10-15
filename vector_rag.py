@@ -11,6 +11,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Set cache directories with fallback for permission issues
+os.environ.setdefault('HF_HOME', '/tmp/huggingface_cache')
+os.environ.setdefault('TRANSFORMERS_CACHE', '/tmp/huggingface_cache/transformers')
+os.environ.setdefault('HF_DATASETS_CACHE', '/tmp/huggingface_cache/datasets')
+
 # --- MODEL INITIALIZATION (Minimal Footprint) ---
 print("Loading Qwen2-0.5B-Instruct...")
 model_name = "Qwen/Qwen2-0.5B-Instruct" 
