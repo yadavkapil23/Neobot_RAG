@@ -18,13 +18,9 @@ spec:
         image: yadavkapil23/rag-app:latest
         ports:
         - containerPort: 8000
-        # --- NEW CODE: INJECT HUGGINGFACE TOKEN FROM A SECRET ---
         env:
         - name: HUGGINGFACE_API_TOKEN
           valueFrom:
             secretKeyRef:
-              # You must create a secret named 'huggingface-secret' beforehand
               name: huggingface-secret
-              # Assuming the key inside the secret is also named HUGGINGFACE_API_TOKEN
               key: HUGGINGFACE_API_TOKEN
-        # --------------------------------------------------------
