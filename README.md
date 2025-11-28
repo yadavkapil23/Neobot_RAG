@@ -37,7 +37,7 @@ Make sure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yadavkapil23/RAG_Project.git
+   git clone https://github.com/yadavkapil23/Neobot_RAG.git
    ```
 
 2. **Set up a virtual environment**:
