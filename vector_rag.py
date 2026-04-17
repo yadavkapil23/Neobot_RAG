@@ -51,12 +51,25 @@ vectorstore = FAISS.from_documents(chunks, embeddings)
 retriever = vectorstore.as_retriever()
 
 def query_vector_store(query: str) -> str:
-    docs = retriever.get_relevant_documents(query)
-    if docs:
-        context = "\n\n".join([doc.page_content for doc in docs])
-        prompt = f"""Use the following context to answer the question:\n\n{context}\n\nQuestion: {query}\nAnswer:"""
-        
+    try:
+        docs = retriever.get_relevant_documents(query)
+        if not docs:
+            print("No local documents matched the query.")
+            return None
+
+        context = "\n\n".join([getattr(doc, 'page_content', '') for doc in docs if getattr(doc, 'page_content', None)])
+        if not context or len(context.strip()) < 20:
+            print("Local documents returned no usable context.")
+            return None
+
+        prompt = f"Using the context below, answer the question.\n\nContext:\n{context}\n\nQuestion: {query}\nAnswer:"
         raw_output = llm.invoke(prompt)
         answer = raw_output.replace(prompt, "").strip()
+        if not answer or len(answer) < 20:
+            print("Local document answer was too short or empty.")
+            return None
+
         return answer
+    except Exception as e:
+        print(f"Error in vector search logic: {e}")
     return None
