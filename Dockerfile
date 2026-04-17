@@ -23,7 +23,7 @@ RUN chown -R app:app /app
 USER app
 
 # Expose the port your app runs on
-EXPOSE 8000
+EXPOSE 7860
 
 # Command to run the application; Hugging Face Spaces sets PORT env
 CMD sh -c "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"
